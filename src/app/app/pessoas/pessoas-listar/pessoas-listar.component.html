@@ -7,8 +7,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let pessoa of pessoas">
-            <td>{{pessoa.nome}}</td>
-            <td>{{pessoa.idade}}</td>
+            <td *ngIf="pessoa.idade >=30">{{pessoa.nome}}</td>
+            <td *ngIf="pessoa.idade >=30">{{pessoa.idade}}</td>
         </tr>
     </tbody>
 </table>
