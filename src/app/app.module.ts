@@ -10,6 +10,10 @@ import { PessoasDetailsComponent } from './pessoas/pessoas-details/pessoas-detai
 import { HeaderComponent } from './layout/header/header.component';
 import { LoginComponent } from './sistema/login/login.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CarrosListarComponent } from './carros/carros-listar/carros-listar.component';
+import { CarrosDetailsComponent } from './carros/carros-details/carros-details.component';
+import { LivrosDetailsComponent } from './livros/livros-details/livros-details.component';
+import { LivrosListarComponent } from './livros/livros-listar/livros-listar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
     PessoasDetailsComponent,
     HeaderComponent,
     LoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    CarrosListarComponent,
+    CarrosDetailsComponent,
+    LivrosDetailsComponent,
+    LivrosListarComponent
   ],
   imports: [
     BrowserModule,
