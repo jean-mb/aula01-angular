@@ -1,14 +1,16 @@
-<table>
-    <thead>
-        <tr>
-            <th>Nome:</th>
-            <th>Idade:</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pessoa of pessoas">
-            <td *ngIf="pessoa.idade >=30">{{pessoa.nome}}</td>
-            <td *ngIf="pessoa.idade >=30">{{pessoa.idade}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="pessoas">
+    <table>
+        <thead>
+            <tr>
+                <th>Nome:</th>
+                <th>Idade:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pessoa of pessoas">
+                <td *ngIf="pessoa.idade >=30">{{pessoa.nome}}</td>
+                <td *ngIf="pessoa.idade >=30">{{pessoa.idade}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
