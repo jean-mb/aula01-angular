@@ -14,6 +14,7 @@ import { CarrosListarComponent } from './carros/carros-listar/carros-listar.comp
 import { CarrosDetailsComponent } from './carros/carros-details/carros-details.component';
 import { LivrosDetailsComponent } from './livros/livros-details/livros-details.component';
 import { LivrosListarComponent } from './livros/livros-listar/livros-listar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LivrosListarComponent } from './livros/livros-listar/livros-listar.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
