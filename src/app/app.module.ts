@@ -5,14 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PessoasListarComponent } from './pessoas/pessoas-listar/pessoas-listar.component';
 import { IndexComponent } from './layout/index/index.component';
-import { MenuComponent } from './menu/menu/menu.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { PessoasDetailsComponent } from './pessoas/pessoas-details/pessoas-details.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { LoginComponent } from './sistema/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PessoasListarComponent,
     IndexComponent,
-    MenuComponent
+    FooterComponent,
+    PessoasDetailsComponent,
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
