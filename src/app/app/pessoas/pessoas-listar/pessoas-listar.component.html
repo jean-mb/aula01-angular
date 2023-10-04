@@ -1,1 +1,14 @@
-<p>pessoas-listar works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Nome:</th>
+            <th>Idade:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.idade}}</td>
+        </tr>
+    </tbody>
+</table>
