@@ -8,11 +8,8 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoas-listar.component.scss'],
 })
 export class PessoasListarComponent {
-  pessoas: Pessoa[] = [];
-  pessoa: Pessoa = {nome: '', idade: 0};
-
   teste(){
-    alert(this.pessoa.nome)
+    alert("oi")
   }
   constructor() {}
 
