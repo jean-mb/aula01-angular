@@ -1,12 +1,13 @@
-nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background-color: rgb(20, 19, 19);
+p{
+    cursor: pointer;
+}
+.nav-link {
+    font-weight: var(--font-weight-principal);
     color: white;
 }
-nav p{
-    cursor: pointer;
+.home-icon {
+    font-size: 1.5rem;
+}
+ul{
+    margin-right: 2rem;
 }
