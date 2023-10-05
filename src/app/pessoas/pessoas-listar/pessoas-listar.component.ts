@@ -8,9 +8,7 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoas-listar.component.scss'],
 })
 export class PessoasListarComponent {
-  teste(){
-    alert("oi")
-  }
+  pessoas: Pessoa[] = []
   constructor() {}
 
 }
