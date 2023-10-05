@@ -9,7 +9,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
   {path: "login", component: LoginComponent},
-  {path: "admin", component: IndexComponent, children: [
+  {path: "app", component: IndexComponent, children: [
     {path: "", component: AdminHomeComponent},
     {path: "pessoas", component: PessoasListarComponent},
     {path: "pessoas/novo", component: PessoasDetailsComponent},

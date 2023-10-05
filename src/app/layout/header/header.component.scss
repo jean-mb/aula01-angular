@@ -1,12 +1,11 @@
 p{
     cursor: pointer;
+    margin: 0;
+    font-size: 1.2rem;
 }
 .nav-link {
-    font-weight: var(--font-weight-principal);
+    font-weight: bold;
     color: white;
-}
-.home-icon {
-    font-size: 1.5rem;
 }
 ul{
     margin-right: 2rem;
