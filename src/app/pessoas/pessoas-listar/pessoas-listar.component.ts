@@ -9,6 +9,12 @@ import { Pessoa } from '../pessoa';
 })
 export class PessoasListarComponent {
   pessoas: Pessoa[] = []
-  constructor() {}
+  constructor() {
+    this.pessoas.push(new Pessoa(1, "Jean", 18))
+    this.pessoas.push(new Pessoa(1, "Jean", 18))
+    this.pessoas.push(new Pessoa(1, "Jean", 18))
+    this.pessoas.push(new Pessoa(1, "Jean", 18))
+    this.pessoas.push(new Pessoa(1, "Jean", 18))
+  }
 
 }

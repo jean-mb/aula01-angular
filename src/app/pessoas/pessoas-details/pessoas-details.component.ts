@@ -9,7 +9,7 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoas-details.component.scss']
 })
 export class PessoasDetailsComponent {
-  pessoa: Pessoa = new Pessoa();
+  pessoa!: Pessoa;
   
 
   teste(){
