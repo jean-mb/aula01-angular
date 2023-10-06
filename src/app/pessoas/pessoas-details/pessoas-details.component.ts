@@ -1,4 +1,4 @@
-import { Component, EventEmitter, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Pessoa } from '../pessoa';
@@ -8,15 +8,18 @@ import { Pessoa } from '../pessoa';
   templateUrl: './pessoas-details.component.html',
   styleUrls: ['./pessoas-details.component.scss']
 })
-export class PessoasDetailsComponent {
-  pessoa: Pessoa = new Pessoa("");
-  
-  @Output() pessoaCriada = new EventEmitter<Pessoa>();
+export class PessoasDetailsComponent implements OnInit {
+  @Input() pessoa: Pessoa = new Pessoa("");
 
+  @Output() pessoaCriada = new EventEmitter<Pessoa>();
   constructor(){
 
   }
   salvar(){
     this.pessoaCriada.emit(this.pessoa);
+  }
+
+  ngOnInit(): void {
+      this.pessoa = Object.assign({},this.pessoa);
   }
 }

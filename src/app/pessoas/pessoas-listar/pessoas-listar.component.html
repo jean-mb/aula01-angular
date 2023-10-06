@@ -14,12 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pessoa of pessoas">
+        <tr *ngFor="let pessoa of pessoas; let i = index">
           <th scope="row">{{ pessoa.id }}</th>
           <td>{{ pessoa.nome }}</td>
           <td>{{ pessoa.idade }}</td>
           <td>
-            <button type="button" (click)="editar(pessoa.id)" class="btn btn-warning btn-sm">Editar</button>
+            <button type="button" (click)="editar(pessoa, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
           </td>
         </tr>
       </tbody>
@@ -35,9 +35,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-
-    <app-pessoas-details (pessoaCriada)="salvarPessoa($event)"></app-pessoas-details>
-
+    <app-pessoas-details [pessoa]="pessoaSelecionada" (pessoaCriada)="salvarPessoa($event)"></app-pessoas-details>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>

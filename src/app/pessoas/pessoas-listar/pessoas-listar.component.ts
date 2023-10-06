@@ -10,23 +10,37 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PessoasListarComponent {
   pessoas: Pessoa[] = []
+  index!: number
+  pessoaSelecionada = new Pessoa("");
   modalService = inject(NgbModal);
 
   constructor() {}
-  abrirModal(details: any){
-    this.modalService.open(details, { size: 'lg' });
+  abrirModal(template: any){
+    this.pessoaSelecionada = new Pessoa("")
+    this.modalService.open(template, { size: 'lg' });
   }
   salvarPessoa(pessoa: Pessoa){ 
-    if(this.pessoas.length != 0){
-      let novoID = this.pessoas[this.pessoas.length-1].id+1
-      pessoa.id = novoID
+    let modoNovo = true;
+    if(pessoa.id > 0){
+      modoNovo = false;
     }else{
-      pessoa.id = 1;  
+      if(this.pessoas.length != 0){
+        let novoID = this.pessoas[this.pessoas.length-1].id+1
+        pessoa.id = novoID
+      }else{
+        pessoa.id = 1;  
+      }
     }
-    this.pessoas.push(pessoa);
+    if(modoNovo){
+      this.pessoas.push(pessoa);
+    }else{
+      this.pessoas[this.index] = pessoa
+    }
+
     this.modalService.dismissAll();
   }
-  editar(id: number){
-    alert(id); 
-  }
+  editar(pessoaEditar: Pessoa ,i: number, template: any){
+    this.pessoaSelecionada = pessoaEditar
+    this.index = i;
+    this.modalService.open(template, { size: 'lg' });  }
 }
