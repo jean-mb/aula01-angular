@@ -11,30 +11,35 @@
           <th scope="col">Nome</th>
           <th scope="col">Idade</th>
           <th scope="col">Ação</th>
-          </tr>
+        </tr>
       </thead>
       <tbody>
         <tr *ngFor="let pessoa of pessoas">
           <th scope="row">{{ pessoa.id }}</th>
           <td>{{ pessoa.nome }}</td>
           <td>{{ pessoa.idade }}</td>
-          <td></td>
+          <td>
+            <button type="button" (click)="editar(pessoa.id)" class="btn btn-warning btn-sm">Editar</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="pessoas.length == 0" class="alert alert-secondary" role="alert">
+      Nenhuma pessoa encontrada
+    </div>
   </div>
 </div>
 <ng-template #cadastro let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title">Cadastrar Pessoa</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		
-        <app-pessoas-details (pessoaCriada)="salvarPessoa($event)" ></app-pessoas-details>
-            
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
-	</div>
+  <div class="modal-header">
+    <h4 class="modal-title">Cadastrar Pessoa</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <app-pessoas-details (pessoaCriada)="salvarPessoa($event)"></app-pessoas-details>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
 </ng-template>

@@ -26,4 +26,7 @@ export class PessoasListarComponent {
     this.pessoas.push(pessoa);
     this.modalService.dismissAll();
   }
+  editar(id: number){
+    alert(id); 
+  }
 }
