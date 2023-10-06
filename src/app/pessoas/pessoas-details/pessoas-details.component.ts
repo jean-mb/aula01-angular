@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, EventEmitter, NgModule, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Pessoa } from '../pessoa';
@@ -9,14 +9,14 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoas-details.component.scss']
 })
 export class PessoasDetailsComponent {
-  pessoa!: Pessoa;
+  pessoa: Pessoa = new Pessoa("", 0);
   
+  @Output() pessoaCriada = new EventEmitter<Pessoa>();
 
-  teste(){
-    alert(this.pessoa.nome)
-    alert(this.pessoa.idade)
-  }
   constructor(){
 
+  }
+  salvar(){
+    this.pessoaCriada.emit(this.pessoa);
   }
 }

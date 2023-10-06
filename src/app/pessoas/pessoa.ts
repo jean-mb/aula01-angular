@@ -3,8 +3,7 @@ export class Pessoa {
     nome!: string;
     idade!: number;
 
-    constructor(id:number, nome: string, idade:number){
-        this.id = id;
+    constructor(nome: string, idade:number){
         this.nome = nome;
         this.idade = idade;
     }

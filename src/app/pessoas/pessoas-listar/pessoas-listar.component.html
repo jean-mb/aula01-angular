@@ -2,7 +2,7 @@
   <div class="w-50 h-100">
     <div class="d-flex justify-content-between mb-3">
       <h3>Lista de Pessoas</h3>
-      <button type="button" class="btn btn-success">Nova Pessoa</button>
+      <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Nova Pessoa</button>
     </div>
     <table class="table table-striped w-100">
       <thead>
@@ -24,3 +24,17 @@
     </table>
   </div>
 </div>
+<ng-template #cadastro let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Modal title</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		
+        <app-pessoas-details (pessoaCriada)="salvarPessoa($event)" ></app-pessoas-details>
+            
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
