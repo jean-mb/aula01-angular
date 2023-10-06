@@ -2,13 +2,13 @@
 <div class="register-form">
     <form class="d-flex flex-column justify-content-between">
       <div class="form-group mb-4">
-        <label for="nome">Modelo</label>
-        <input type="text" [(ngModel)]="carro.modelo" name="nome" class="form-control" id="nome"
+        <label for="modelo">Modelo</label>
+        <input type="text" [(ngModel)]="carro.modelo" name="modelo" class="form-control" id="modelo"
           placeholder="Modelo do Carro">
       </div>
       <div class="form-group mb-4">
-        <label for="idade">Ano</label>
-        <input type="number" [(ngModel)]="carro.ano" name="idade" class="form-control" id="idade"
+        <label for="ano">Ano</label>
+        <input type="number" [(ngModel)]="carro.ano" name="ano" class="form-control" id="ano"
           placeholder="Ano do Modelo">
       </div>
       <button  type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button>
