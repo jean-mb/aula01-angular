@@ -1,6 +1,14 @@
-<div class="login">
-    <div class="welcome">
-        <h2>Bem vindo! Faça login!</h2>
-    </div>
-    <button routerLink="/admin">Login</button>
+<div class="login d-flex align-items-center justify-content-center">
+    <form class="d-flex flex-column form-signin">
+        <h1 class="h3 font-weight-normal">Faça Login</h1>
+        <div class="mt-3">
+            <label for="user" class="sr-only">Usuário</label>
+            <input type="text" id="user" [(ngModel)]="usuario.login" name="login" class="form-control" placeholder="Usuário" required="" autofocus="">
+        </div>
+        <div class="mt-3 mb-4">
+            <label for="senha" class="sr-only">Password</label>
+            <input type="password" id="senha" [(ngModel)]="usuario.senha" name="senha" class="form-control" placeholder="Senha" required="">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" (click)="login()" type="submit">Login</button>
+      </form>
 </div>
