@@ -5,6 +5,7 @@ import { LoginComponent } from './sistema/login/login.component';
 import { PessoasListarComponent } from './pessoas/pessoas-listar/pessoas-listar.component';
 import { PessoasDetailsComponent } from './pessoas/pessoas-details/pessoas-details.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CarrosListarComponent } from './carros/carros-listar/carros-listar.component';
 
 const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
@@ -12,8 +13,7 @@ const routes: Routes = [
   {path: "app", component: IndexComponent, children: [
     {path: "", component: AdminHomeComponent},
     {path: "pessoas", component: PessoasListarComponent},
-    {path: "pessoas/novo", component: PessoasDetailsComponent},
-    {path: "pessoas/editar/:id", component: PessoasDetailsComponent},
+    {path: "carros", component: CarrosListarComponent},
   ]}
   
 ];

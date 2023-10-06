@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pessoa } from '../pessoa';
 
 @Component({
