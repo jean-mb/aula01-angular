@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IndexComponent } from './layout/index/index.component';
-import { LoginComponent } from './sistema/login/login.component';
-import { PessoasListarComponent } from './pessoas/pessoas-listar/pessoas-listar.component';
-import { PessoasDetailsComponent } from './pessoas/pessoas-details/pessoas-details.component';
-import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
-import { CarrosListarComponent } from './carros/carros-listar/carros-listar.component';
-import { LivrosListarComponent } from './livros/livros-listar/livros-listar.component';
+import { IndexComponent } from './components/index/index.component';
+import { LoginComponent } from './core/login/login.component';
+import { AdminHomeComponent } from './views/admin/admin-home/admin-home.component';
+import { CarrosListarComponent } from './views/carros/carros-listar/carros-listar.component';
+import { LivrosListarComponent } from './views/livros/livros-listar/livros-listar.component';
+import { PessoasListarComponent } from './views/pessoas/pessoas-listar/pessoas-listar.component';
 
 const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
