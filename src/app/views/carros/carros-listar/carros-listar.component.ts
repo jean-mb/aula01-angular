@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Carro } from '../../../models/carro/carro';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CarroService } from 'src/app/services/carro/carro.service';
 
 @Component({
   selector: 'app-carros-listar',
@@ -10,37 +11,76 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CarrosListarComponent {
   carros: Carro[] = [];
   index!: number;
+  isErro!: boolean;
+  mensagem: string = '';
   carroSelecionado = new Carro('');
   modalService = inject(NgbModal);
+  carroService = inject(CarroService);
 
-  constructor() {}
+  constructor() {
+    this.getAll();
+  }
+  getAll() {
+    this.carroService.getAll().subscribe({
+      next: (carros) => {
+        this.carros = carros;
+      },
+      error: (erro) => {
+        alert(erro.error);
+      },
+    });
+  }
   abrirModal(template: any) {
+    this.mensagem = '';
     this.carroSelecionado = new Carro('');
     this.modalService.open(template, { size: 'lg' });
   }
   salvarEditarCarro(carro: Carro) {
-    let modoNovo = true;
-    if (carro.id > 0) {
-      modoNovo = false;
+    if (!carro.id) {
+      this.carroService.post(carro).subscribe({
+        next: (success) => {
+          this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Carro cadastrado com sucesso!';
+          this.modalService.dismissAll();
+        },
+        error: (erro) => {
+          this.isErro = true;
+          this.mensagem = erro.error as string;
+        },
+      });
     } else {
-      if (this.carros.length != 0) {
-        let novoID = this.carros[this.carros.length - 1].id + 1;
-        carro.id = novoID;
-      } else {
-        carro.id = 1;
-      }
+      this.carroService.put(carro.id, carro).subscribe({
+        next: (success) => {
+          this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Carro editado com sucesso!';
+          this.modalService.dismissAll();
+        },
+        error: (erro) => {
+          this.isErro = true;
+          this.mensagem = erro.error as string;
+        },
+      });
     }
-    if (modoNovo) {
-      this.carros.push(carro);
-    } else {
-      this.carros[this.index] = carro;
-    }
-
-    this.modalService.dismissAll();
   }
-  editar(pessoaEditar: Carro, i: number, template: any) {
-    this.carroSelecionado = pessoaEditar;
+  editar(carroEditar: Carro, i: number, template: any) {
+    this.carroSelecionado = carroEditar;
     this.index = i;
     this.modalService.open(template, { size: 'lg' });
+  }
+  deletar(id: number) {
+    this.carroService.delete(id).subscribe({
+      next: (success) => {
+        this.getAll();
+        this.isErro = true;
+        this.mensagem = 'Carro deletado com sucesso!';
+      },
+      error: (erro) => {
+        this.isErro = true;
+        console.log(erro);
+        this.mensagem = erro.error as string;
+      },
+    });
   }
 }

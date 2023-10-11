@@ -4,6 +4,12 @@
         <h3>Lista de Carros</h3>
         <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Novo Carro</button>
       </div>
+      <div *ngIf="isErro && mensagem" class="alert alert-danger" role="alert">
+        {{mensagem}}
+      </div>
+      <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
+        {{mensagem}}
+      </div>  
       <table class="table table-striped w-100">
         <thead>
           <tr>
@@ -20,6 +26,8 @@
             <td>{{ carro.ano }}</td>
             <td>
               <button type="button" (click)="editar(carro, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
+              <button type="button" (click)="deletar(carro.id)" class="btn btn-danger btn-sm">Deletar</button>
+
             </td>
           </tr>
         </tbody>
@@ -31,11 +39,11 @@
   </div>
   <ng-template #cadastro let-modal>
     <div class="modal-header">
-      <h4 class="modal-title">Cadastrar Pessoa</h4>
+      <h4 class="modal-title">Cadastrar Carro</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <app-carros-details [carro]="carroSelecionado" (carroCriado)="salvarEditarCarro($event)"></app-carros-details>
+      <app-carros-details [carro]="carroSelecionado" [isErro]="isErro" [mensagem]="mensagem" (carroCriado)="salvarEditarCarro($event)"></app-carros-details>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>

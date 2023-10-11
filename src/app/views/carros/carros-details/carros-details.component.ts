@@ -8,7 +8,8 @@ import { Carro } from '../../../models/carro/carro';
 })
 export class CarrosDetailsComponent {
   @Input() carro: Carro = new Carro('');
-
+  @Input() isErro: boolean = true
+  @Input() mensagem: string = ""
   @Output() carroCriado = new EventEmitter<Carro>();
   constructor() {}
   salvar() {

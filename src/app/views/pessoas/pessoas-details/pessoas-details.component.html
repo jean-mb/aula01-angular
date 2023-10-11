@@ -17,7 +17,7 @@
       <input type="number" [(ngModel)]="pessoa.idade" name="idade" class="form-control" id="idade"
         placeholder="Idade da Pessoa">
     </div>
-    <button  type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button>
-    <!-- <button type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button> -->
+    <button *ngIf="pessoa.id" type="button" (click)="salvar()" class="w-25 btn btn-warning">Editar</button>
+    <button *ngIf="!pessoa.id" type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button>
   </form>
 </div>
