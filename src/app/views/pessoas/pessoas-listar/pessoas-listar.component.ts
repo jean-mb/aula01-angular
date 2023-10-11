@@ -49,9 +49,10 @@ export class PessoasListarComponent {
         },
         error: (erro) => {
           alert(erro.error);
-          console.log(erro)
+          console.log(erro);
         },
-      });    }
+      });
+    }
 
     this.modalService.dismissAll();
   }
@@ -59,5 +60,15 @@ export class PessoasListarComponent {
     this.pessoaSelecionada = pessoaEditar;
     this.index = i;
     this.modalService.open(template, { size: 'lg' });
+  }
+  deletar(id: number) {
+    this.pessoaService.delete(id).subscribe({
+      next: (success) => {
+        this.getAll();
+      },
+      error: (erro) => {
+        console.log(erro);
+      },
+    });
   }
 }

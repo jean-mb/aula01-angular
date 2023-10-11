@@ -20,6 +20,7 @@
           <td>{{ pessoa.idade }}</td>
           <td>
             <button type="button" (click)="editar(pessoa, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
+            <button type="button" (click)="deletar(pessoa.id)" class="btn btn-danger btn-sm">Deletar</button>
           </td>
         </tr>
       </tbody>
