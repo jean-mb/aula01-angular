@@ -19,10 +19,10 @@ export class PessoaService {
     return this.http.get<Pessoa[]>(`${this.API}/all`)
   }
   post(pessoa: Pessoa): Observable<Pessoa>{
-    return this.http.post<Pessoa>(`${this.API}/all`, pessoa)
+    return this.http.post<Pessoa>(`${this.API}/post`, pessoa)
   }
   put(id:number, pessoa: Pessoa): Observable<Pessoa>{
-    return this.http.post<Pessoa>(`${this.API}/put/${id}`, pessoa)
+    return this.http.put<Pessoa>(`${this.API}/put/${id}`, pessoa)
   }
   delete(id:number): Observable<Pessoa>{
     return this.http.delete<Pessoa>(`${this.API}/delete/${id}`)

@@ -15,42 +15,43 @@ export class PessoasListarComponent {
   modalService = inject(NgbModal);
   pessoaService = inject(PessoaService);
 
-
   constructor() {
-    this.getAll()
+    this.getAll();
   }
-  getAll(){
+  getAll() {
     this.pessoaService.getAll().subscribe({
-      next: pessoas => {
+      next: (pessoas) => {
         this.pessoas = pessoas;
       },
-      error: erro => {
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-        console.error(erro);
-      }
+      error: (erro) => {
+        alert(erro.error);
+      },
     });
   }
   abrirModal(template: any) {
     this.pessoaSelecionada = new Pessoa('');
     this.modalService.open(template, { size: 'lg' });
   }
-  salvarPessoa(pessoa: Pessoa) {
-    let modoNovo = true;
-    if (pessoa.id > 0) {
-      modoNovo = false;
+  salvarEditarPessoa(pessoa: Pessoa) {
+    if (!pessoa.id) {
+      this.pessoaService.post(pessoa).subscribe({
+        next: (success) => {
+          this.getAll();
+        },
+        error: (erro) => {
+          alert(erro.error);
+        },
+      });
     } else {
-      if (this.pessoas.length != 0) {
-        let novoID = this.pessoas[this.pessoas.length - 1].id + 1;
-        pessoa.id = novoID;
-      } else {
-        pessoa.id = 1;
-      }
-    }
-    if (modoNovo) {
-      this.pessoas.push(pessoa);
-    } else {
-      this.pessoas[this.index] = pessoa;
-    }
+      this.pessoaService.put(pessoa.id, pessoa).subscribe({
+        next: (success) => {
+          this.getAll();
+        },
+        error: (erro) => {
+          alert(erro.error);
+          console.log(erro)
+        },
+      });    }
 
     this.modalService.dismissAll();
   }
