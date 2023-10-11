@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Pessoa } from 'src/app/models/pessoa/pessoa';
-import { PessoaService } from 'src/app/services/pessoa.service';
+import { PessoaService } from 'src/app/services/pessoa/pessoa.service';
 
 @Component({
   selector: 'app-pessoas-listar',
@@ -78,7 +78,7 @@ export class PessoasListarComponent {
       },
       error: (erro) => {
         this.isErro = true;
-        console.log(erro)
+        console.log(erro);
         this.mensagem = erro.error as string;
       },
     });
