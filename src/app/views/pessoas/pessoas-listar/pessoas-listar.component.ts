@@ -12,6 +12,8 @@ export class PessoasListarComponent {
   pessoas: Pessoa[] = [];
   index!: number;
   pessoaSelecionada = new Pessoa('');
+  isErro!: boolean;
+  mensagem: string = '';
   modalService = inject(NgbModal);
   pessoaService = inject(PessoaService);
 
@@ -29,6 +31,7 @@ export class PessoasListarComponent {
     });
   }
   abrirModal(template: any) {
+    this.mensagem = "";
     this.pessoaSelecionada = new Pessoa('');
     this.modalService.open(template, { size: 'lg' });
   }
@@ -37,15 +40,20 @@ export class PessoasListarComponent {
       this.pessoaService.post(pessoa).subscribe({
         next: (success) => {
           this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Pessoa cadastrada com sucesso!';
+          this.modalService.dismissAll();
         },
         error: (erro) => {
-          alert(erro.error);
+          this.isErro = true;
+          this.mensagem = erro.error as string;
         },
       });
     } else {
       this.pessoaService.put(pessoa.id, pessoa).subscribe({
         next: (success) => {
           this.getAll();
+          this.modalService.dismissAll();
         },
         error: (erro) => {
           alert(erro.error);
@@ -54,7 +62,6 @@ export class PessoasListarComponent {
       });
     }
 
-    this.modalService.dismissAll();
   }
   editar(pessoaEditar: Pessoa, i: number, template: any) {
     this.pessoaSelecionada = pessoaEditar;

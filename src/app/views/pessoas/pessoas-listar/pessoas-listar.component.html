@@ -4,6 +4,12 @@
       <h3>Lista de Pessoas</h3>
       <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Nova Pessoa</button>
     </div>
+    <div *ngIf="isErro && mensagem" class="alert alert-danger" role="alert">
+      {{mensagem}}
+    </div>
+    <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
+      {{mensagem}}
+    </div>  
     <table class="table table-striped w-100">
       <thead>
         <tr>
@@ -36,7 +42,8 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <app-pessoas-details [pessoa]="pessoaSelecionada" (pessoaCriada)="salvarEditarPessoa($event)"></app-pessoas-details>
+    <app-pessoas-details [isErro]="isErro" [mensagem]="mensagem" [pessoa]="pessoaSelecionada"
+      (pessoaCriada)="salvarEditarPessoa($event)"></app-pessoas-details>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>

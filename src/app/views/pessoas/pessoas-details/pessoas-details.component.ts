@@ -9,11 +9,11 @@ import { Pessoa } from 'src/app/models/pessoa/pessoa';
 })
 export class PessoasDetailsComponent implements OnInit {
   @Input() pessoa: Pessoa = new Pessoa("");
-
+  @Input() isErro: boolean = true
+  @Input() mensagem: string = ""
   @Output() pessoaCriada = new EventEmitter<Pessoa>();
-  constructor(){
 
-  }
+  constructor(){}
   salvar(){
     this.pessoaCriada.emit(this.pessoa);
   }
