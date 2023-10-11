@@ -1,23 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Carro } from '../carro';
+import { Carro } from '../../../models/carro/carro';
 
 @Component({
   selector: 'app-carros-details',
   templateUrl: './carros-details.component.html',
-  styleUrls: ['./carros-details.component.scss']
+  styleUrls: ['./carros-details.component.scss'],
 })
 export class CarrosDetailsComponent {
-  @Input() carro: Carro = new Carro("");
+  @Input() carro: Carro = new Carro('');
 
   @Output() carroCriado = new EventEmitter<Carro>();
-  constructor(){
-
-  }
-  salvar(){
+  constructor() {}
+  salvar() {
     this.carroCriado.emit(this.carro);
   }
 
   ngOnInit(): void {
-      this.carro = Object.assign({},this.carro);
+    this.carro = Object.assign({}, this.carro);
   }
 }
