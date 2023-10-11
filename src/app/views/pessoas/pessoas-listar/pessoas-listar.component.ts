@@ -77,7 +77,6 @@ export class PessoasListarComponent {
         this.mensagem = 'Pessoa deletada com sucesso!';
       },
       error: (erro) => {
-        alert("deu erro ai bro")
         this.isErro = true;
         console.log(erro)
         this.mensagem = erro.error as string;
