@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Pessoa } from '../pessoa';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Pessoa } from 'src/app/models/pessoa/pessoa';
 
 
 @Component({
