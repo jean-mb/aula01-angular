@@ -17,6 +17,7 @@ import { LivrosDetailsComponent } from './views/livros/livros-details/livros-det
 import { LivrosListarComponent } from './views/livros/livros-listar/livros-listar.component';
 import { PessoasDetailsComponent } from './views/pessoas/pessoas-details/pessoas-details.component';
 import { PessoasListarComponent } from './views/pessoas/pessoas-listar/pessoas-listar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PessoasListarComponent } from './views/pessoas/pessoas-listar/pessoas-l
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
