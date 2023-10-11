@@ -73,7 +73,7 @@ export class PessoasListarComponent {
     this.pessoaService.delete(id).subscribe({
       next: (success) => {
         this.getAll();
-        this.isErro = false;
+        this.isErro = true;
         this.mensagem = 'Pessoa deletada com sucesso!';
       },
       error: (erro) => {
