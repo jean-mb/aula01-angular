@@ -31,7 +31,7 @@ export class PessoasListarComponent {
     });
   }
   abrirModal(template: any) {
-    this.mensagem = "";
+    this.mensagem = '';
     this.pessoaSelecionada = new Pessoa('');
     this.modalService.open(template, { size: 'lg' });
   }
@@ -53,15 +53,16 @@ export class PessoasListarComponent {
       this.pessoaService.put(pessoa.id, pessoa).subscribe({
         next: (success) => {
           this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Pessoa editada com sucesso!';
           this.modalService.dismissAll();
         },
         error: (erro) => {
-          alert(erro.error);
-          console.log(erro);
+          this.isErro = true;
+          this.mensagem = erro.error as string;
         },
       });
     }
-
   }
   editar(pessoaEditar: Pessoa, i: number, template: any) {
     this.pessoaSelecionada = pessoaEditar;
@@ -72,9 +73,14 @@ export class PessoasListarComponent {
     this.pessoaService.delete(id).subscribe({
       next: (success) => {
         this.getAll();
+        this.isErro = false;
+        this.mensagem = 'Pessoa deletada com sucesso!';
       },
       error: (erro) => {
-        console.log(erro);
+        alert("deu erro ai bro")
+        this.isErro = true;
+        console.log(erro)
+        this.mensagem = erro.error as string;
       },
     });
   }
