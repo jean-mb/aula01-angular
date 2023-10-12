@@ -1,23 +1,20 @@
-
 <div class="register-form">
-    <form class="d-flex flex-column justify-content-between">
-      <div *ngIf="isErro && mensagem" class="alert alert-danger" role="alert">
-        {{mensagem}}
-       </div>
-       <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
-         {{mensagem}}
-        </div>
-      <div class="form-group mb-4">
-        <label for="modelo">Modelo</label>
-        <input type="text" [(ngModel)]="carro.modelo" name="modelo" class="form-control" id="modelo"
-          placeholder="Modelo do Carro">
-      </div>
-      <div class="form-group mb-4">
-        <label for="ano">Ano</label>
-        <input type="number" [(ngModel)]="carro.ano" name="ano" class="form-control" id="ano"
-          placeholder="Ano do Modelo">
-      </div>
-      <button *ngIf="carro.id"  type="button" (click)="salvar()" class="w-25 btn btn-warning">Editar</button>
-      <button *ngIf="!carro.id" type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button>
-    </form>
-  </div>
+  <form class="d-flex flex-column justify-content-between">
+    <div [ngClass]="{
+        'alert alert-success':'!isErro',
+        'alert alert-danger':'isErro'}" *ngIf="mensagem" role="alert">
+      {{mensagem}}
+    </div>
+    <div class="form-group mb-4">
+      <label for="modelo">Modelo</label>
+      <input type="text" [(ngModel)]="carro.modelo" name="modelo" class="form-control" id="modelo"
+        placeholder="Modelo do Carro">
+    </div>
+    <div class="form-group mb-4">
+      <label for="ano">Ano</label>
+      <input type="number" [(ngModel)]="carro.ano" name="ano" class="form-control" id="ano" placeholder="Ano do Modelo">
+    </div>
+    <button *ngIf="carro.id" type="button" (click)="salvar()" class="w-25 btn btn-warning">Editar</button>
+    <button *ngIf="!carro.id" type="button" (click)="salvar()" class="w-25 btn btn-success">Cadastrar</button>
+  </form>
+</div>

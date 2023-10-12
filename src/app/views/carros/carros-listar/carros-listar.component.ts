@@ -65,6 +65,7 @@ export class CarrosListarComponent {
     }
   }
   editar(carroEditar: Carro, i: number, template: any) {
+    this.mensagem = '';
     this.carroSelecionado = carroEditar;
     this.index = i;
     this.modalService.open(template, { size: 'lg' });

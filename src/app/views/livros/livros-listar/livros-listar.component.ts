@@ -65,6 +65,7 @@ export class LivrosListarComponent {
     }
   }
   editar(livroEditar: Livro, i: number, template: any) {
+    this.mensagem = ""
     this.livroSelecionado = livroEditar;
     this.index = i;
     this.modalService.open(template, { size: 'lg' });

@@ -65,6 +65,7 @@ export class PessoasListarComponent {
     }
   }
   editar(pessoaEditar: Pessoa, i: number, template: any) {
+    this.mensagem = ""
     this.pessoaSelecionada = pessoaEditar;
     this.index = i;
     this.modalService.open(template, { size: 'lg' });
