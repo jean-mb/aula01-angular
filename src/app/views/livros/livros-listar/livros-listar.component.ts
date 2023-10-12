@@ -1,45 +1,86 @@
 import { Component, inject } from '@angular/core';
-import { Livro } from '../livro';
+import { Livro } from '../../../models/livro/livro';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LivroService } from 'src/app/services/livro/livro.service';
 
 @Component({
   selector: 'app-livros-listar',
   templateUrl: './livros-listar.component.html',
-  styleUrls: ['./livros-listar.component.scss']
+  styleUrls: ['./livros-listar.component.scss'],
 })
 export class LivrosListarComponent {
-  livros: Livro[] = []
-  index!: number
-  livroSelecionado = new Livro("", "");
+  livros: Livro[] = [];
+  index!: number;
+  livroSelecionado = new Livro('', '');
+  isErro!: boolean;
+  mensagem: string = '';
   modalService = inject(NgbModal);
+  livroService = inject(LivroService);
 
-  constructor() {}
-  abrirModal(template: any){
-    this.livroSelecionado = new Livro("", "")
+  constructor() {
+    this.getAll();
+  }
+  getAll() {
+    this.livroService.getAll().subscribe({
+      next: (livros) => {
+        this.livros = livros;
+      },
+      error: (erro) => {
+        alert(erro.error);
+      },
+    });
+  }
+  abrirModal(template: any) {
+    this.mensagem = '';
+    this.livroSelecionado = new Livro('', '');
     this.modalService.open(template, { size: 'lg' });
   }
-  salvarEditarLivro(livro: Livro){ 
-    let modoNovo = true;
-    if(livro.id > 0){
-      modoNovo = false;
-    }else{
-      if(this.livros.length != 0){
-        let novoID = this.livros[this.livros.length-1].id+1
-        livro.id = novoID
-      }else{
-        livro.id = 1;  
-      }
+  salvarEditarLivro(livro: Livro) {
+    if (!livro.id) {
+      this.livroService.post(livro).subscribe({
+        next: (success) => {
+          this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Livro cadastrado com sucesso!';
+          this.modalService.dismissAll();
+        },
+        error: (erro) => {
+          this.isErro = true;
+          this.mensagem = erro.error as string;
+        },
+      });
+    } else {
+      this.livroService.put(livro.id, livro).subscribe({
+        next: (success) => {
+          this.getAll();
+          this.isErro = false;
+          this.mensagem = 'Livro editado com sucesso!';
+          this.modalService.dismissAll();
+        },
+        error: (erro) => {
+          this.isErro = true;
+          this.mensagem = erro.error as string;
+        },
+      });
     }
-    if(modoNovo){
-      this.livros.push(livro);
-    }else{
-      this.livros[this.index] = livro
-    }
-
-    this.modalService.dismissAll();
   }
-  editar(pessoaEditar: Livro ,i: number, template: any){
-    this.livroSelecionado = pessoaEditar
+  editar(livroEditar: Livro, i: number, template: any) {
+    this.livroSelecionado = livroEditar;
     this.index = i;
-    this.modalService.open(template, { size: 'lg' });  }
+    this.modalService.open(template, { size: 'lg' });
+  }
+  deletar(id: number) {
+    this.livroService.delete(id).subscribe({
+      next: (success) => {
+        this.getAll();
+        this.isErro = true;
+        this.mensagem = 'Livro deletado com sucesso!';
+      },
+      error: (erro) => {
+        this.isErro = true;
+        console.log(erro);
+        this.mensagem = erro.error as string;
+      },
+    });
+  }
 }
