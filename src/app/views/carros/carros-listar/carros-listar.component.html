@@ -1,51 +1,52 @@
 <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
-    <div class="w-50 h-100">
-      <div class="d-flex justify-content-between mb-3">
-        <h3>Lista de Carros</h3>
-        <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Novo Carro</button>
-      </div>
-      <div *ngIf="isErro && mensagem" class="alert alert-danger" role="alert">
-        {{mensagem}}
-      </div>
-      <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
-        {{mensagem}}
-      </div>  
-      <table class="table table-striped w-100">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Idade</th>
-            <th scope="col">Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let carro of carros; let i = index">
-            <th scope="row">{{ carro.id }}</th>
-            <td>{{ carro.modelo }}</td>
-            <td>{{ carro.ano }}</td>
-            <td>
-              <button type="button" (click)="editar(carro, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
-              <button type="button" (click)="deletar(carro.id)" class="btn btn-danger btn-sm">Deletar</button>
+  <div class="w-50 h-100">
+    <div class="d-flex justify-content-between mb-3">
+      <h3>Lista de Carros</h3>
+      <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Novo Carro</button>
+    </div>
+    <div *ngIf="isErro && mensagem" class="alert alert-danger" role="alert">
+      {{mensagem}}
+    </div>
+    <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
+      {{mensagem}}
+    </div>
+    <table class="table table-striped w-100">
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th scope="col">#</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let carro of carros; let i = index">
+          <th scope="row">{{ carro.id }}</th>
+          <td>{{ carro.modelo }}</td>
+          <td>{{ carro.ano }}</td>
+          <td class="d-flex align-items-center gap-2 justify-content-center">
+            <button type="button" (click)="editar(carro, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
+            <button type="button" (click)="deletar(carro.id)" class="btn btn-danger btn-sm">Deletar</button>
 
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div *ngIf="carros.length == 0" class="alert alert-secondary" role="alert">
-        Nenhum carro encontrado
-      </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="carros.length == 0" class="alert alert-secondary" role="alert">
+      Nenhum carro encontrado
     </div>
   </div>
-  <ng-template #cadastro let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">Cadastrar Carro</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <app-carros-details [carro]="carroSelecionado" [isErro]="isErro" [mensagem]="mensagem" (carroCriado)="salvarEditarCarro($event)"></app-carros-details>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
-    </div>
-  </ng-template>
+</div>
+<ng-template #cadastro let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cadastrar Carro</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-carros-details [carro]="carroSelecionado" [isErro]="isErro" [mensagem]="mensagem"
+      (carroCriado)="salvarEditarCarro($event)"></app-carros-details>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
+</ng-template>

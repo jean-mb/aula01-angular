@@ -9,23 +9,23 @@
     </div>
     <div *ngIf="!isErro && mensagem" class="alert alert-success" role="alert">
       {{mensagem}}
-    </div>  
+    </div>
     <table class="table table-striped w-100">
-      <thead>
-        <tr>
+      <thead class="table-dark">
+        <tr class="text-center">
           <th scope="col">#</th>
           <th scope="col">Nome</th>
           <th scope="col">Idade</th>
           <th scope="col">Ação</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         <tr *ngFor="let pessoa of pessoas; let i = index">
           <th scope="row">{{ pessoa.id }}</th>
           <td>{{ pessoa.nome }}</td>
           <td>{{ pessoa.idade }}</td>
-          <td>
-            <button type="button" (click)="editar(pessoa, i, cadastro)" class="btn btn-warning btn-sm">Editar</button>
+          <td class="d-flex align-items-center gap-2 justify-content-center">
+            <button type="button" (click)="editar(pessoa, i, cadastro)" class="ml-5 btn btn-warning btn-sm">Editar</button>
             <button type="button" (click)="deletar(pessoa.id)" class="btn btn-danger btn-sm">Deletar</button>
           </td>
         </tr>
