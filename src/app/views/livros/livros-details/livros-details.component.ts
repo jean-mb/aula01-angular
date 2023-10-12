@@ -8,7 +8,8 @@ import { Livro } from '../../../models/livro/livro';
 })
 export class LivrosDetailsComponent {
   @Input() livro: Livro = new Livro('', '');
-
+  @Input() isErro: boolean = true
+  @Input() mensagem: string = ""
   @Output() livroCriado = new EventEmitter<Livro>();
   constructor() {}
   salvar() {
